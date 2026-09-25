@@ -1,0 +1,173 @@
+Practical 1
+1) who is website
+search website name - all info
+
+2)basic commands
+ipconfig(if config -Linux) - checking ip addresses
+ping (ip address) - used to check if the host is active or not
+netstat - It displays information about network connections and listening ports on your computer.
+TCP Flags
+ Syn – It initialize the communication
+ Ack – It acknowledges the communication
+ Rst – It resets the communication
+ Urg – It puts the packet on priority
+ Psh – It push the packets from the stack
+ Fin – It ends the communication
+tracert website name - it is used to check the route
+systeminfo - it is used to check the information of the system
+
+3) DNS enumeration
+nslookup - used to map the domain name with ip address
+
+4) Net bios enumeration
+netstat --help
+
+5) nmap - network mapper - scans the ip
+1. Intense Scan, No Ping
+Logic: The question says skip host discovery, so this scan does not rely on ping first.
+
+2. Ping Scan
+Logic: Used to discover which hosts are currently active/alive on the subnet.
+
+3. Not Covered by Practical 1
+Logic: The scans in Practical 1 do not specifically provide a scan for the condition where SYN packets are blocked but TCP connections are allowed.
+
+4. Not Covered by Practical 1
+Logic: Practical 1 does not separately include TCP Connect Scan and SYN Scan, so their comparison cannot be made using only the given scans.
+
+5. Quick Scan Plus
+Logic: This is the closest scan for quickly checking ports while gathering additional information. Practical 1 does not specifically mention top 100 ports with service-version detection.
+
+6. Intense Scan
+Logic: Used when detailed information about the target is required. It provides more information than a Quick or Regular Scan.
+
+7. Intense Scan, No Ping
+Logic: Used when ICMP/ping is blocked because it can proceed without relying on ping-based host discovery.
+
+8. Intense Scan Plus UDP
+Logic: Used because the question specifically requires scanning UDP ports.
+
+9. Intense Scan
+Logic: Used for detailed target information. Practical 1 does not separately specify an OS-detection scan.
+
+10. Intense Scan
+Logic: Used for detailed scanning. Practical 1 does not separately specify a scan combining OS detection, service versions, NSE scripts, and traceroute.
+
+Practical 2
+cryptography
+1) Caesar cypher
+set the number value
+2) Playfair algo
+add a key 
+3) Vernam cipher
+text
+make a text file with otp 
+
+
+Practical 3 wireshark
+capture packets/ sniff packets - Options - select all ethernet
+go to acunetix test login page - username - test password - test 
+http -  get and post in wireshark(apply filter)
+tcp.flags.fin == 1
+
+Practical 4 social engineering
+sudo su 
+git clone https://github.com/htr-tech/zphisher.git
+chmod -R 777 zphisher/
+cd zphisher/
+./zphisher.sh
+
+setoolkit
+y
+
+Fictional Cyber Crime Case
+Two Crimes – One City
+On 31st July 2026, 2:50 Hrs, the rain-soaked streets of Mumbai reflected neon lights as Jai Hind College closed its doors for the night. The Principal, Mr. Rao, exhausted after a long day, checked his phone one last time.
+
+A WhatsApp message from an unknown number blinked onto his screen.
+
+“Exclusive Jai Hind College Pack – Free for Students.”
+
+It seemed harmless, even generous—a small gift for the college’s aspiring students.
+
+He forwarded the link to the official WhatsApp group, not knowing that this single act was about to turn Jai Hind College into a stage for digital chaos.
+
+By midnight, the first whispers of malfunction began. Systems froze. Files glitches.
+
+By dawn, every computer was locked behind a black screen.
+
+A timer ticked down in red while a robotic voice repeated:
+
+“You are now encrypted. Pay ₹50 lakh within 48 hours… or face silence forever.”
+
+Student projects, financial records, class schedules, and administrative data were all locked. The college stood in silence, its academic operations strangled by invisible digital chains.
+
+Meanwhile, approximately 5 kilometres away in Mumbai, the Vice Chancellor, Mr. Chandrahauns Murri, of K.C College, opened an anonymous email on 1st August 2025, 08:50 Hrs.
+
+The message was simple but devastating:
+
+“Final-year examination papers of Jai Hind College have been leaked.”
+
+Screenshots showed confidential examination PDFs circulating in a private group.
+
+The university’s secure server logs later revealed that a professor’s credentials had been used to access the examination folder one night earlier. During an inspection of the college staff laboratory, investigators discovered a small black device hidden behind a workstation.
+
+The last person recorded using that terminal was Ravi Bahl, an intern IT assistant.
+
+It began with two crimes, a city too blind to see, and one signature that sealed the fate of the education system.
+
+Practical 5 - DOS attack
+hping3
+nslookup 
+hping3 --flood -S -p 80 217.21.91.156
+wireshark - capture packets
+ip.addr==217.21.91.156
+
+download loic
+college url and ip - catch packets on wireshark
+
+Practical 6 - BurpSuite and DVWA
+go on burpsuite - proxy
+open browser - juice-shop.herokuapp.com/#/login - login - test test 
+proxy - http history - get the packet - post packet 
+check request and response
+send post packet to intruder 
+sniper attack - add s
+sql injection payloads in browser - readme copy generic sql injection payloads 
+paste in payload configuration - start attack 
+results and response - copy token 
+decoder - smart decode - copy password - decode the hash - get the password and email 
+login again 
+
+DVWA
+server.vulnapp.id/dvwa/login.php
+login admin password
+reset database in setup 
+set security to low
+sql injection add user id as 1, a' or ' ' = ', 1=1 , 1*
+
+Practical 7 - study of password cracking
+(Md5(message digest algorithm) is used to create hash values)
+go to browser - md5 hash calculator
+write admin  - generate - md5 hash copy 
+desktop - new folder(prac7) - create file - demo.txt 
+paste md5 hash - ctrl s
+open hash identifier - paste hash value 
+(Hash identifier is a tool used to identify possible hashes a user can store password encrypted form using different hashing algorithm like md5, sha and ntlm)
+copy sha1 hash 
+paste in demo.txt - ctrl s 
+paste in hash identifier
+(rockyou: it is a plain text file that contains a list of commonly used password. Approximately 15 lacks passwords are stored in rockyou that was previously leak or compromised. In kali linux by default rockyou file is stored in (/usr/share/wordlists) directory)
+file sysyem - /usr/share/wordlists - copy file
+paste in prac7 folder and extract
+search john 
+(John the ripper: it is an open source password cracking tool used to crack encrypted password, hash password, default passwords and other commonly used passwords. It can also used by security analyst to check the strength of the password and find its vulnerabilities.)
+copy path for rockyou and demo 
+sudo john --format=raw-md5 --wordlist=/home/kali/desktop/prac7/rockyou.txt /home/kali/desktop/prac7/demo.txt
+
+Practical 8 -
+start dvwa - reset database - login again 
+set security to low
+xss stored - name - test 1 
+message - <script>alert("XSSAttack")</script>
+signguestbook done 
